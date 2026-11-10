@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Commercial Bakery Venture Onboarding & Investment Roadmap | CBIP",
+  title: "Canada Business Venture Structure | CBIP",
   description:
-    "A transparent, step-by-step breakdown of capital allocation, corporate setup, and operational deployment for the Canadian Business Investment Program.",
+    "A transparent, step-by-step breakdown of capital allocation, corporate setup, and operational deployment for the Canada Business Venture Structure.",
 };
 
 export default function RootLayout({

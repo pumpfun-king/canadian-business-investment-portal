@@ -51,7 +51,7 @@ export function Navbar({
               </span>
             </div>
             <p className="text-[11px] text-stone-300 hidden sm:block truncate">
-              Canadian Business Investment Program • Investor Portal
+              Canada Business Venture Structure • Investor Portal
             </p>
           </div>
         </a>

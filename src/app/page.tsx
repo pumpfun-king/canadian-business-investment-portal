@@ -465,7 +465,7 @@ export default function OnboardingPortalPage() {
                   </span>
                 </div>
                 <div className="text-[10px] text-stone-300 font-mono tracking-wider uppercase">
-                  Canadian Investor Portal
+                  Canada Business Venture Structure
                 </div>
               </div>
             </div>
@@ -659,7 +659,7 @@ export default function OnboardingPortalPage() {
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl pointer-events-none" />
                   <div>
                     <h3 className="text-xl font-bold tracking-tight text-white">
-                      About CBIP Commercial Bakery Venture
+                      About Canada Business Venture Structure
                     </h3>
                     <p className="mt-3 text-xs sm:text-sm text-rose-100/90 leading-relaxed">
                       The Canadian Business Investment Program provides international
@@ -1052,7 +1052,7 @@ export default function OnboardingPortalPage() {
                         "Schedule I Canadian Chartered Bank Escrow",
                         "International Banking Instructions",
                         [
-                          "Beneficiary: Canadian Bakery Venture Operating Corp.",
+                          "Beneficiary: Canada Business Venture Structure",
                           "Account Type: Commercial Operating & Escrow Account",
                           "Ordering Customer: Named Principal Investor Only",
                           "Currency: Canadian Dollars (CAD)",
@@ -1645,7 +1645,7 @@ export default function OnboardingPortalPage() {
             <span className="font-mono font-bold text-white">TLG GLOBAL</span>
             <span className="text-stone-500">•</span>
             <span className="text-stone-400">
-              Canadian Business Investment Program
+              Canada Business Venture Structure
             </span>
           </div>
           <div className="text-[11px] text-stone-400 font-mono">
