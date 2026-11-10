@@ -16,7 +16,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { ProcedureStepper } from "@/components/ProcedureStepper";
 import { CapitalBreakdown } from "@/components/CapitalBreakdown";
 import { DocumentChecklistFaq } from "@/components/DocumentChecklistFaq";
-import { Building2, ShieldCheck, Lock, CheckCircle2 } from "lucide-react";
+import { Compass, ShieldCheck, Lock, CheckCircle2 } from "lucide-react";
 
 const STATUS_CYCLE: Record<ComplianceStatus, ComplianceStatus> = {
   Required: "In Progress",
@@ -32,7 +32,6 @@ export default function OnboardingPortalPage() {
   const [downloadToast, setDownloadToast] = useState<boolean>(false);
   const [joinModalTrigger, setJoinModalTrigger] = useState<number>(0);
 
-  // Cycle deliverable status inside a phase and automatically recalculate overall phase status
   const handleToggleDeliverableStatus = (
     phaseId: number,
     deliverableId: string
@@ -69,7 +68,6 @@ export default function OnboardingPortalPage() {
     );
   };
 
-  // Cycle checklist document status
   const handleToggleDocStatus = (docId: string) => {
     setDocuments((prevDocs) =>
       prevDocs.map((doc) =>
@@ -78,7 +76,6 @@ export default function OnboardingPortalPage() {
     );
   };
 
-  // Generate and download a comprehensive plain-text Client Onboarding Checklist & Capital Summary
   const handleDownloadChecklist = () => {
     const lines: string[] = [
       "================================================================================",
@@ -148,8 +145,8 @@ export default function OnboardingPortalPage() {
   ).length;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] overflow-x-hidden">
-      {/* Sticky Top Institutional Navigation */}
+    <div className="min-h-screen flex flex-col bg-[#FBF9F8] overflow-x-hidden selection:bg-[#831f28] selection:text-white">
+      {/* Sticky Top Navigation with TLG Monogram and Crimson Accents */}
       <Navbar
         verifiedCount={verifiedDocsCount}
         totalDocs={documents.length}
@@ -159,11 +156,11 @@ export default function OnboardingPortalPage() {
 
       {/* Download Confirmation Toast */}
       {downloadToast && (
-        <div className="fixed bottom-5 right-5 z-50 bg-slate-900 text-white border border-emerald-500/50 rounded-xl px-4 py-3 shadow-xl flex items-center gap-3 text-xs font-medium">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="fixed bottom-5 right-5 z-50 bg-[#121b27] text-white border border-rose-500/50 rounded-2xl px-5 py-3.5 shadow-2xl flex items-center gap-3 text-xs font-medium">
+          <CheckCircle2 className="w-4 h-4 text-rose-400 shrink-0" />
           <span>
             Downloaded{" "}
-            <strong className="font-mono text-emerald-300">
+            <strong className="font-mono text-rose-300">
               CBIP-Commercial-Bakery-Onboarding-Checklist.txt
             </strong>
           </span>
@@ -172,7 +169,7 @@ export default function OnboardingPortalPage() {
 
       {/* Main Content */}
       <main className="flex-1">
-        {/* LIVE 24/7 5-STEP PROGRESSIVE SQUAD SYNDICATION BAR WITH SQUASH ANIMATIONS */}
+        {/* LIVE 24/7 5-STEP PROGRESSIVE BAR WITH SQUASH ANIMATIONS */}
         <LiveSquadProgressHub externalModalTrigger={joinModalTrigger} />
 
         {/* 1. Hero Section + Quick Metrics Bar */}
@@ -201,31 +198,31 @@ export default function OnboardingPortalPage() {
         />
       </main>
 
-      {/* Institutional Footer */}
-      <footer className="bg-[#0F172A] text-slate-400 border-t border-slate-800 py-10 text-xs">
+      {/* Institutional Footer - TLG Style Dark Slate with Crimson Accents */}
+      <footer className="bg-gradient-to-r from-[#101721] via-[#1a1c24] to-[#3a1318] text-stone-300 border-t border-[#34181f] py-12 text-xs">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-              <Building2 className="w-4 h-4" />
+          <div className="flex items-center gap-3.5">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#831f28] to-[#4e1117] border border-[#a82d38]/60 flex items-center justify-center text-white shrink-0 shadow-md">
+              <Compass className="w-5 h-5 text-white" />
             </div>
             <div>
-              <div className="font-bold text-white text-sm">
+              <div className="font-extrabold text-white text-sm">
                 Canadian Business Investment Program • Commercial Bakery Venture
               </div>
-              <div className="text-slate-400 text-[11px] font-mono">
+              <div className="text-stone-400 text-[11px] font-mono mt-0.5">
                 Total Capital: $75,000 CAD ($45,000 Direct Investor / $30,000
                 Partner Co-Funding) • 12–24 Month Roadmap
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-slate-400">
-            <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-stone-300">
+            <span className="inline-flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+              <ShieldCheck className="w-3.5 h-3.5 text-rose-300" />
               Unencumbered Equity Verified
             </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Lock className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="inline-flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+              <Lock className="w-3.5 h-3.5 text-rose-300" />
               Schedule I Corporate Escrow
             </span>
           </div>
