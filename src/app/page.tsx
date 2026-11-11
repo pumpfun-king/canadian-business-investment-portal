@@ -48,6 +48,7 @@ import {
   Building2,
   Eye,
   Check,
+  Menu,
 } from "lucide-react";
 
 import {
@@ -170,6 +171,7 @@ export default function OnboardingPortalPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [confirmationCode, setConfirmationCode] = useState("CBVS-9021");
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const currentBusiness: BusinessVentureGroup =
     CANADIAN_BUSINESS_VENTURES[
@@ -416,7 +418,7 @@ export default function OnboardingPortalPage() {
     }).format(val);
 
   return (
-    <div className="min-h-screen bg-[#8c2b33] text-stone-900 selection:bg-[#681920] selection:text-white py-4 sm:py-8 lg:py-12 px-2 sm:px-6 lg:px-12 flex justify-center items-center">
+    <div className="min-h-screen bg-[#8c2b33] text-stone-900 selection:bg-[#681920] selection:text-white p-2 sm:p-6 lg:p-10 flex justify-center items-center">
       {/* Toast Alert */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-[#16212e] text-white border border-rose-300/40 rounded-full px-5 py-3 shadow-2xl flex items-center gap-3 text-xs font-semibold animate-bounce">
@@ -426,23 +428,26 @@ export default function OnboardingPortalPage() {
       )}
 
       {/* THE CENTRAL WHITE APP CANVAS */}
-      <div className="w-full max-w-[1440px] bg-white rounded-[32px] sm:rounded-[44px] overflow-hidden tlg-device-frame border border-white/20 relative shadow-2xl">
+      <div className="w-full max-w-[1440px] bg-white rounded-2xl sm:rounded-[36px] lg:rounded-[44px] overflow-hidden tlg-device-frame border border-white/20 relative shadow-2xl">
         {/* =========================================================================
             TLG TOP DARK HEADER: Exact Navy / Charcoal / Crimson Gradient Header
            ========================================================================= */}
-        <div className="bg-gradient-to-r from-[#141f2c] via-[#241a24] to-[#711e26] text-white pt-6 pb-10 sm:pt-8 sm:pb-14 px-6 sm:px-10 lg:px-14 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#141f2c] via-[#241a24] to-[#711e26] text-white pt-5 pb-8 sm:pt-8 sm:pb-14 px-4 sm:px-10 lg:px-14 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#8c2b33]/40 rounded-full blur-3xl pointer-events-none" />
 
           {/* Top Brand & Menu Row */}
-          <div className="flex items-center justify-between pb-6 mb-6 border-b border-white/10 relative z-10 flex-wrap gap-4">
-            {/* TLG Style Monogram & Logo */}
+          <div className="flex items-center justify-between pb-4 sm:pb-6 mb-4 sm:mb-6 border-b border-white/10 relative z-10 gap-3">
+            {/* CBVS Style Monogram & Logo */}
             <div
-              onClick={() => setActiveTab("overview")}
-              className="flex items-center gap-3 cursor-pointer group"
+              onClick={() => {
+                setActiveTab("overview");
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group shrink-0"
             >
-              <div className="w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-inner group-hover:scale-105 transition-transform">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-inner group-hover:scale-105 transition-transform shrink-0">
                 <svg
-                  className="w-6 h-6 text-white"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -458,17 +463,17 @@ export default function OnboardingPortalPage() {
                 </svg>
               </div>
               <div>
-                <div className="font-extrabold tracking-widest text-lg font-mono text-white flex items-center gap-2">
+                <div className="font-extrabold tracking-widest text-base sm:text-lg font-mono text-white flex items-center gap-2 leading-none">
                   <span>CBVS</span>
                 </div>
-                <div className="text-[10px] text-stone-300 font-mono tracking-wider uppercase">
+                <div className="text-[9px] sm:text-[10px] text-stone-300 font-mono tracking-wider uppercase mt-1 leading-none">
                   Canada Business Venture Structure
                 </div>
               </div>
             </div>
 
-            {/* THE 6 HEADER MENU TABS - CLICKING SHOWS THAT TAB AND HIDES ALL OTHER CONTAINERS */}
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-300 bg-black/30 p-1.5 rounded-full border border-white/10 backdrop-blur-sm overflow-x-auto max-w-full">
+            {/* Desktop Navigation Tabs (Hidden on mobile/tablet) */}
+            <div className="hidden xl:flex items-center gap-1.5 text-xs font-semibold text-stone-300 bg-black/30 p-1.5 rounded-full border border-white/10 backdrop-blur-sm">
               <button
                 onClick={() => setActiveTab("overview")}
                 className={`px-4 py-2 rounded-full transition-all cursor-pointer whitespace-nowrap ${
@@ -531,25 +536,225 @@ export default function OnboardingPortalPage() {
               </button>
             </div>
 
-            {/* Quick Actions (Join Button + Download) */}
-            <div className="flex items-center gap-2.5">
+            {/* Quick Actions & Mobile Hamburger Menu Toggle */}
+            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               <button
-                onClick={() => setActiveTab("join")}
-                className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs font-bold bg-[#8c2b33] hover:bg-[#a6343d] text-white border border-rose-400/40 shadow-md cursor-pointer transition-all active:scale-95"
+                onClick={() => {
+                  setActiveTab("join");
+                  setMobileMenuOpen(false);
+                }}
+                className="inline-flex items-center gap-1.5 px-3 sm:px-5 py-2 rounded-full text-xs font-bold bg-[#8c2b33] hover:bg-[#a6343d] text-white border border-rose-400/40 shadow-md cursor-pointer transition-all active:scale-95"
               >
                 <UserPlus className="w-3.5 h-3.5" />
-                <span>Join Business ($75k)</span>
+                <span className="hidden sm:inline">Join Business</span> ($75k)
               </button>
 
               <button
                 onClick={handleDownloadChecklist}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all cursor-pointer"
+                className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Checklist</span>
               </button>
+
+              {/* Hamburger Button for Mobile screens (Matches Dribbble screens) */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="xl:hidden w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white cursor-pointer transition-colors"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </button>
             </div>
           </div>
+
+          {/* Mobile Horizontal Pill Scrollbar (Always accessible on mobile for fast 1-tap switching) */}
+          <div className="xl:hidden flex items-center gap-1.5 text-xs font-semibold text-stone-300 bg-black/30 p-1.5 rounded-full border border-white/10 backdrop-blur-sm overflow-x-auto no-scrollbar touch-pan-x mb-4">
+            <button
+              onClick={() => {
+                setActiveTab("overview");
+                setMobileMenuOpen(false);
+              }}
+              className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 text-[11px] ${
+                activeTab === "overview"
+                  ? "bg-[#8c2b33] text-white shadow-md font-bold"
+                  : "hover:text-white hover:bg-white/5"
+              }`}
+            >
+              Overview
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab("timeline");
+                setMobileMenuOpen(false);
+              }}
+              className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 text-[11px] ${
+                activeTab === "timeline"
+                  ? "bg-[#8c2b33] text-white shadow-md font-bold"
+                  : "hover:text-white hover:bg-white/5"
+              }`}
+            >
+              Visa Process
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab("capital");
+                setMobileMenuOpen(false);
+              }}
+              className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 text-[11px] ${
+                activeTab === "capital"
+                  ? "bg-[#8c2b33] text-white shadow-md font-bold"
+                  : "hover:text-white hover:bg-white/5"
+              }`}
+            >
+              $75k Split
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab("documents");
+                setMobileMenuOpen(false);
+              }}
+              className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 text-[11px] ${
+                activeTab === "documents"
+                  ? "bg-[#8c2b33] text-white shadow-md font-bold"
+                  : "hover:text-white hover:bg-white/5"
+              }`}
+            >
+              Documentation
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab("faq");
+                setMobileMenuOpen(false);
+              }}
+              className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 text-[11px] ${
+                activeTab === "faq"
+                  ? "bg-[#8c2b33] text-white shadow-md font-bold"
+                  : "hover:text-white hover:bg-white/5"
+              }`}
+            >
+              FAQs
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab("join");
+                setMobileMenuOpen(false);
+              }}
+              className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 text-[11px] ${
+                activeTab === "join"
+                  ? "bg-[#8c2b33] text-white shadow-md font-bold"
+                  : "hover:text-white hover:bg-white/5"
+              }`}
+            >
+              Client Registration
+            </button>
+          </div>
+
+          {/* Animated Mobile Dropdown Menu Drawer */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="xl:hidden bg-[#101722]/95 border border-white/15 rounded-3xl p-4 mb-4 backdrop-blur-xl overflow-hidden shadow-2xl space-y-2"
+              >
+                <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
+                  <button
+                    onClick={() => {
+                      setActiveTab("overview");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`p-3 rounded-2xl text-left cursor-pointer transition-all ${
+                      activeTab === "overview"
+                        ? "bg-[#8c2b33] text-white font-bold"
+                        : "bg-white/5 text-stone-200 hover:bg-white/10"
+                    }`}
+                  >
+                    📊 Overview
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveTab("timeline");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`p-3 rounded-2xl text-left cursor-pointer transition-all ${
+                      activeTab === "timeline"
+                        ? "bg-[#8c2b33] text-white font-bold"
+                        : "bg-white/5 text-stone-200 hover:bg-white/10"
+                    }`}
+                  >
+                    🗺️ Visa Process
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveTab("capital");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`p-3 rounded-2xl text-left cursor-pointer transition-all ${
+                      activeTab === "capital"
+                        ? "bg-[#8c2b33] text-white font-bold"
+                        : "bg-white/5 text-stone-200 hover:bg-white/10"
+                    }`}
+                  >
+                    💰 $75k Capital Split
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveTab("documents");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`p-3 rounded-2xl text-left cursor-pointer transition-all ${
+                      activeTab === "documents"
+                        ? "bg-[#8c2b33] text-white font-bold"
+                        : "bg-white/5 text-stone-200 hover:bg-white/10"
+                    }`}
+                  >
+                    📁 Documentation
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveTab("faq");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`p-3 rounded-2xl text-left cursor-pointer transition-all ${
+                      activeTab === "faq"
+                        ? "bg-[#8c2b33] text-white font-bold"
+                        : "bg-white/5 text-stone-200 hover:bg-white/10"
+                    }`}
+                  >
+                    ❓ FAQs
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveTab("join");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`p-3 rounded-2xl text-left cursor-pointer transition-all ${
+                      activeTab === "join"
+                        ? "bg-[#8c2b33] text-white font-bold"
+                        : "bg-white/5 text-stone-200 hover:bg-white/10"
+                    }`}
+                  >
+                    📝 Client Registration
+                  </button>
+                </div>
+
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between gap-2">
+                  <button
+                    onClick={() => {
+                      handleDownloadChecklist();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download Checklist (.TXT)</span>
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Hero Header Strip */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end relative z-10">
@@ -558,6 +763,9 @@ export default function OnboardingPortalPage() {
                 {activeTab === "overview" && "OVERVIEW DASHBOARD"}
                 {activeTab === "timeline" && "5-PHASE VISA PROCESS"}
                 {activeTab === "capital" && "$75,000 CAD CAPITAL SPLIT"}
+                {activeTab === "documents" && "DOCUMENTATION LIBRARY"}
+                {activeTab === "faq" && "FREQUENTLY ASKED QUESTIONS"}
+                {activeTab === "join" && "CLIENT REGISTRATION"}
                 {activeTab === "documents" && "DOCUMENTATION LIBRARY"}
                 {activeTab === "faq" && "FREQUENTLY ASKED QUESTIONS"}
                 {activeTab === "join" && "CLIENT REGISTRATION"}
@@ -606,6 +814,18 @@ export default function OnboardingPortalPage() {
                 Here you can find all the necessary information and documents.
                 Your pathway to Canadian Commercial Investment starts now.
               </p>
+
+              {/* Dribbble Style Circular Scroll Button on Mobile */}
+              <button
+                onClick={() => {
+                  const el = document.getElementById("content-canvas");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white cursor-pointer hover:bg-white/10 transition-colors mt-4 sm:hidden active:scale-95 shadow-sm"
+                aria-label="Scroll down to view portal sections"
+              >
+                <ArrowDown className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Quick Metrics Badge */}
@@ -643,7 +863,7 @@ export default function OnboardingPortalPage() {
         {/* =========================================================================
             WHITE CONTENT CANVAS: DYNAMICALLY SWITCHES BASED ON ACTIVE MENU SELECTION
            ========================================================================= */}
-        <div className="p-6 sm:p-10 lg:p-14 bg-white min-h-[500px]">
+        <div id="content-canvas" className="p-4 sm:p-8 lg:p-14 bg-white min-h-[500px]">
           {/* =====================================================================
               TAB 1: OVERVIEW (Default View from Screenshots)
              ===================================================================== */}
@@ -737,15 +957,12 @@ export default function OnboardingPortalPage() {
               </div>
 
               {/* Progressive 5-Step Squad Progress Bar & Rotating 56+ Businesses */}
-              <div className="rounded-3xl border border-stone-200 bg-[#FBF9F8] p-6 sm:p-8 space-y-6">
+              <div className="rounded-3xl border border-stone-200 bg-[#FBF9F8] p-4 sm:p-8 space-y-5 sm:space-y-6">
                 <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#8c2b33] font-bold bg-[#8c2b33]/10 px-2.5 py-0.5 rounded-full">
-                        VENTURE #{businessIndex + 1} OF{" "}
-                        {CANADIAN_BUSINESS_VENTURES.length}
-                      </span>
-                      <span className="text-xs text-stone-500 font-mono">
+                      <span className="inline-flex items-center gap-1 text-xs text-stone-600 font-mono font-medium bg-stone-100 px-2.5 py-0.5 rounded-full border border-stone-200">
+                        <MapPin className="w-3.5 h-3.5 text-[#8c2b33]" />
                         {currentBusiness.city}, {currentBusiness.province}
                       </span>
                     </div>
@@ -760,24 +977,24 @@ export default function OnboardingPortalPage() {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                     <button
                       onClick={() =>
                         setBusinessIndex(
                           (b) => (b + 1) % CANADIAN_BUSINESS_VENTURES.length
                         )
                       }
-                      className="px-3.5 py-2 rounded-full text-xs font-mono font-semibold bg-white border border-stone-300 text-stone-700 hover:border-[#8c2b33] cursor-pointer shadow-xs"
+                      className="w-full sm:w-auto px-3.5 py-2 rounded-full text-xs font-mono font-semibold bg-white border border-stone-300 text-stone-700 hover:border-[#8c2b33] cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
                     >
-                      <Shuffle className="w-3.5 h-3.5 inline mr-1 text-[#8c2b33]" />
+                      <Shuffle className="w-3.5 h-3.5 text-[#8c2b33]" />
                       <span>Cycle Venture ({businessIndex + 1}/56)</span>
                     </button>
 
                     <button
                       onClick={() => setIsCatalogOpen(true)}
-                      className="px-3.5 py-2 rounded-full text-xs font-mono font-semibold bg-white border border-stone-300 text-stone-700 hover:border-[#8c2b33] cursor-pointer shadow-xs"
+                      className="flex-1 sm:flex-initial px-3.5 py-2 rounded-full text-xs font-mono font-semibold bg-white border border-stone-300 text-stone-700 hover:border-[#8c2b33] cursor-pointer shadow-xs flex items-center justify-center gap-1.5"
                     >
-                      <Search className="w-3.5 h-3.5 inline mr-1 text-[#8c2b33]" />
+                      <Search className="w-3.5 h-3.5 text-[#8c2b33]" />
                       <span>Browse All 56+</span>
                     </button>
 
@@ -786,20 +1003,20 @@ export default function OnboardingPortalPage() {
                         setSelectedBusinessId(currentBusiness.id);
                         setActiveTab("join");
                       }}
-                      className="px-5 py-2.5 rounded-full text-xs font-bold bg-[#8c2b33] hover:bg-[#a6343d] text-white shadow-md cursor-pointer transition-all active:scale-95"
+                      className="flex-1 sm:flex-initial px-5 py-2.5 rounded-full text-xs font-bold bg-[#8c2b33] hover:bg-[#a6343d] text-white shadow-md cursor-pointer transition-all active:scale-95 text-center"
                     >
-                      <span>Join Business ($75,000)</span>
+                      <span>Join ($75,000)</span>
                     </button>
                   </div>
                 </div>
 
                 {/* 5-Break Progress Bar with Squash Physics */}
                 <div className="space-y-2.5">
-                  <div className="grid grid-cols-5 gap-2 text-center text-xs font-mono">
+                  <div className="grid grid-cols-5 gap-1 sm:gap-2 text-center text-xs font-mono">
                     {FIVE_STEP_BREAKS.map((b) => (
                       <div
                         key={b.step}
-                        className={`py-1.5 px-2 rounded-xl border text-[11px] font-bold ${
+                        className={`py-1 sm:py-1.5 px-1 sm:px-2 rounded-lg sm:rounded-xl border text-[9px] sm:text-[11px] font-bold truncate ${
                           progress >= b.pct
                             ? "bg-[#8c2b33] text-white border-[#8c2b33]"
                             : "bg-white text-stone-600 border-stone-200"
@@ -1758,7 +1975,7 @@ export default function OnboardingPortalPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-[32px] max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-stone-200"
+              className="bg-white rounded-2xl sm:rounded-[32px] max-w-2xl w-full p-4 sm:p-8 shadow-2xl border border-stone-200 max-h-[90vh] flex flex-col"
             >
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
@@ -1836,7 +2053,7 @@ export default function OnboardingPortalPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-[32px] max-w-lg w-full p-7 sm:p-8 shadow-2xl border border-stone-200"
+              className="bg-white rounded-2xl sm:rounded-[32px] max-w-lg w-full p-5 sm:p-8 shadow-2xl border border-stone-200 max-h-[90vh] overflow-y-auto"
             >
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
@@ -1896,7 +2113,7 @@ export default function OnboardingPortalPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-[32px] border border-stone-200 max-w-lg w-full p-7 shadow-2xl"
+              className="bg-white rounded-2xl sm:rounded-[32px] border border-stone-200 max-w-lg w-full p-5 sm:p-7 shadow-2xl max-h-[90vh] overflow-y-auto"
             >
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>

@@ -471,10 +471,6 @@ export function LiveSquadProgressHub({
           <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-5 mb-6 relative z-10">
             <div className="space-y-2.5">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-0.5 rounded-full bg-[#831f28]/35 border border-rose-400/40 text-[11px] font-mono text-rose-200 font-bold">
-                  VENTURE #{String(businessIndex + 1).padStart(2, "0")} OF{" "}
-                  {CANADIAN_BUSINESS_VENTURES.length}
-                </span>
                 <span className="px-3 py-0.5 rounded-full bg-[#1e2a3b] border border-[#2f4058] text-[11px] font-mono text-stone-300 font-medium">
                   {currentBusiness.naics} • {currentBusiness.sector}
                 </span>
