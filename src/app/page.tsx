@@ -168,7 +168,7 @@ export default function OnboardingPortalPage() {
   >("75k-unit");
   const [confirmedUnencumbered, setConfirmedUnencumbered] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [confirmationCode, setConfirmationCode] = useState("CBIP-TLG-9021");
+  const [confirmationCode, setConfirmationCode] = useState("CBVS-9021");
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const currentBusiness: BusinessVentureGroup =
@@ -296,7 +296,7 @@ export default function OnboardingPortalPage() {
     if (!fullName.trim() || !email.trim()) return;
 
     const randomDigits = Math.floor(1000 + Math.random() * 9000);
-    setConfirmationCode(`CBIP-TLG-${randomDigits}`);
+    setConfirmationCode(`CBVS-${randomDigits}`);
 
     const cleanCountry = applicantCountry.trim() || "International";
 
@@ -459,10 +459,7 @@ export default function OnboardingPortalPage() {
               </div>
               <div>
                 <div className="font-extrabold tracking-widest text-lg font-mono text-white flex items-center gap-2">
-                  <span>TLG</span>
-                  <span className="text-[11px] font-sans font-normal text-rose-200 uppercase tracking-widest bg-white/15 px-2 py-0.5 rounded-full border border-white/20">
-                    GLOBAL
-                  </span>
+                  <span>CBVS</span>
                 </div>
                 <div className="text-[10px] text-stone-300 font-mono tracking-wider uppercase">
                   Canada Business Venture Structure
@@ -1642,7 +1639,7 @@ export default function OnboardingPortalPage() {
            ========================================================================= */}
         <div className="bg-[#121b27] text-stone-300 py-6 px-6 sm:px-10 lg:px-14 border-t border-[#233144] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <div className="flex items-center gap-2">
-            <span className="font-mono font-bold text-white">TLG GLOBAL</span>
+            <span className="font-mono font-bold text-white">CBVS</span>
             <span className="text-stone-500">•</span>
             <span className="text-stone-400">
               Canada Business Venture Structure
