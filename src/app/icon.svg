@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="canadianBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8c2b33"/>
+      <stop offset="100%" stop-color="#5a1218"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#canadianBg)"/>
+  <path filter="url(#shadow)" fill="#ffffff" d="M 256,50 L 274,106 L 332,84 L 321,136 L 390,138 L 358,187 L 406,220 L 345,249 L 358,306 L 302,289 L 264,374 L 264,462 L 248,462 L 248,374 L 210,289 L 154,306 L 167,249 L 106,220 L 154,187 L 122,138 L 191,136 L 180,84 L 238,106 Z"/>
+</svg>

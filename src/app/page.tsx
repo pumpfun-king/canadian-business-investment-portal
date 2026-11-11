@@ -445,21 +445,13 @@ export default function OnboardingPortalPage() {
               }}
               className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group shrink-0"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-inner group-hover:scale-105 transition-transform shrink-0">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-inner group-hover:scale-105 transition-transform shrink-0 p-1.5 sm:p-2">
                 <svg
-                  className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  className="w-full h-full text-white"
+                  viewBox="0 0 512 512"
+                  fill="currentColor"
                 >
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-4 4 4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z" />
-                  <path d="M22 12a4 4 0 0 1-4 4h-1a4 4 0 0 1-4-4 4 4 0 0 1 4-4h1a4 4 0 0 1 4 4z" />
-                  <path d="M12 22a4 4 0 0 1-4-4v-1a4 4 0 0 1 4-4 4 4 0 0 1 4 4v1a4 4 0 0 1-4 4z" />
-                  <path d="M2 12a4 4 0 0 1 4-4h1a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z" />
+                  <path d="M 256,50 L 274,106 L 332,84 L 321,136 L 390,138 L 358,187 L 406,220 L 345,249 L 358,306 L 302,289 L 264,374 L 264,462 L 248,462 L 248,374 L 210,289 L 154,306 L 167,249 L 106,220 L 154,187 L 122,138 L 191,136 L 180,84 L 238,106 Z" />
                 </svg>
               </div>
               <div>

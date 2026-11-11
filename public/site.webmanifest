@@ -1,0 +1,17 @@
+{
+  "name": "Canada Business Venture Structure (CBVS)",
+  "short_name": "CBVS",
+  "description": "Canada Business Venture Structure Investor Portal - $75,000 CAD Commercial Investment & PR Pathway",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#8c2b33",
+  "theme_color": "#8c2b33",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
