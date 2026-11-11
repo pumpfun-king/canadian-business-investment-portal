@@ -889,9 +889,27 @@ export default function OnboardingPortalPage() {
                 <div className="rounded-3xl border border-stone-200 overflow-hidden divide-y divide-stone-100 bg-[#FBF9F8] text-xs sm:text-sm">
                   <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <span className="text-stone-600 font-medium">
+                      Permanent Residency (PR) Pathway
+                    </span>
+                    <span className="font-bold font-mono text-[#8c2b33] text-sm sm:text-base">
+                      Canadian Permanent Residency (PR) at process completion • Zero age or language barrier
+                    </span>
+                  </div>
+
+                  <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <span className="text-stone-600 font-medium">
+                      First Month (Day 30) Legal Status
+                    </span>
+                    <span className="font-bold font-mono text-stone-900">
+                      Official legal papers &amp; documents to stay in Canada legally during process
+                    </span>
+                  </div>
+
+                  <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <span className="text-stone-600 font-medium">
                       Total Required Commercial Capital
                     </span>
-                    <span className="font-bold font-mono text-stone-900 text-sm sm:text-base">
+                    <span className="font-bold font-mono text-stone-900">
                       $75,000 CAD minimum active investment in Commercial Bakery Venture
                     </span>
                   </div>
@@ -930,6 +948,80 @@ export default function OnboardingPortalPage() {
                     <span className="font-bold font-mono text-stone-900">
                       12–24 months active commercial deployment &amp; milestone governance
                     </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Program Benefits & First Month Legal Privileges (Matches Screenshot 2 "Program Benefits") */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-bold tracking-tight text-stone-900">
+                    Program Benefits &amp; First Month Legal Status
+                  </h3>
+                  <span className="text-xs font-mono font-bold text-[#8c2b33] bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
+                    No Age Barrier • No Language Barrier
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Card 1: Month 1 Legal Papers & Stay */}
+                  <div className="p-6 rounded-3xl bg-[#711e26] text-white space-y-3 shadow-lg relative overflow-hidden">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-rose-200 font-bold bg-white/10 px-2.5 py-0.5 rounded-full border border-white/20">
+                        MONTH 1 IMMEDIATE PRIVILEGE
+                      </span>
+                      <ShieldCheck className="w-5 h-5 text-rose-300" />
+                    </div>
+                    <h4 className="text-lg font-bold text-white">
+                      Legal Stay Papers in Month 1
+                    </h4>
+                    <p className="text-xs text-rose-100 leading-relaxed">
+                      Within the first 30 days, investors receive official legal papers and corporate executive documents enabling them to reside, live, and manage their venture in Canada 100% legally while the process is underway.
+                    </p>
+                    <div className="pt-2 border-t border-white/15 space-y-1.5 text-xs text-rose-100 font-mono">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-300 shrink-0" />
+                        <span>Immediate legal stay documents in Canada</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-300 shrink-0" />
+                        <span>Full family inclusion (spouse &amp; dependents)</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-300 shrink-0" />
+                        <span>Access to public healthcare &amp; schooling eligibility</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 2: Permanent Residency (PR) Guarantee */}
+                  <div className="p-6 rounded-3xl bg-[#151f2b] text-white space-y-3 shadow-lg relative overflow-hidden">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-rose-200 font-bold bg-[#8c2b33] px-2.5 py-0.5 rounded-full">
+                        END-OF-PROCESS OUTCOME
+                      </span>
+                      <CheckCircle2 className="w-5 h-5 text-rose-400" />
+                    </div>
+                    <h4 className="text-lg font-bold text-white">
+                      Permanent Residency (PR) Pathway
+                    </h4>
+                    <p className="text-xs text-stone-300 leading-relaxed">
+                      At the end of the operational venture process, investors transition directly to full Canadian Permanent Residency (PR) status, securing lifelong residence and citizenship rights.
+                    </p>
+                    <div className="pt-2 border-t border-white/10 space-y-1.5 text-xs text-stone-300 font-mono">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                        <span>Zero Age Barrier: No points-system age deduction</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                        <span>Zero Language Barrier: No mandatory test barriers</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                        <span>Direct transition from legal stay to PR status</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

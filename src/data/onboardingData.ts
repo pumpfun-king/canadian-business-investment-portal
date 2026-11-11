@@ -592,6 +592,22 @@ export const DOCUMENT_CHECKLIST: ChecklistDocument[] = [
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
+    id: "faq-pr-benefit",
+    question: "Do investors receive Canadian Permanent Residency (PR) and legal stay papers in Month 1?",
+    answer:
+      "Yes. The program is designed to deliver Permanent Residency (PR) upon completion of the operational roadmap, with zero age barrier and no prohibitive language exams. Crucially, within Month 1 of onboarding, investors receive official statutory legal papers and corporate executive status enabling them and their accompanying family members to stay, live, and operate in Canada 100% legally while the commercial venture buildout proceeds.",
+    category: "Residency & PR Pathway",
+    regulatoryTag: "Guaranteed PR & Month-1 Legal Stay",
+  },
+  {
+    id: "faq-first-month-benefits",
+    question: "What complete benefits do investors receive within the first 30 days (Month 1)?",
+    answer:
+      "Within Month 1, investors obtain: 1) Official legal papers and corporate authorization to reside legally in Canada; 2) Zero age barrier qualification (no points-system age penalties); 3) Zero language barrier requirements (no mandatory IELTS/TEF cutoffs for commercial owner-operators); 4) Family inclusion covering spouse and dependent children under the same venture file; 5) Access to Canadian public healthcare registration eligibility and provincial education for children; 6) Corporate tax identification and CRA Business Number (BN) registration; and 7) A dedicated Canadian Schedule I bank commercial escrow account in the corporation's name.",
+    category: "Month-1 Privileges",
+    regulatoryTag: "First Month Comprehensive Benefits",
+  },
+  {
     id: "faq-1",
     question: "Why must all invested funds be strictly unencumbered and free of loans?",
     answer:
